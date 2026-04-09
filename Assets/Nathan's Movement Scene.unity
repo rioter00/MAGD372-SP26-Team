@@ -1499,7 +1499,7 @@ GameObject:
   - component: {fileID: 1915560677}
   - component: {fileID: 1915560676}
   - component: {fileID: 1915560675}
-  - component: {fileID: 1915560674}
+  - component: {fileID: 1915560679}
   m_Layer: 0
   m_Name: Car
   m_TagString: Untagged
@@ -1507,26 +1507,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1915560674
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1915560673}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cf83a43d13df2e642b9b5e6c7090d207, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: '::'
-  LanePositions:
-  - {fileID: 949767956}
-  - {fileID: 1177633941}
-  - {fileID: 1901885838}
-  - {fileID: 1786607470}
-  LaneChangeSpeed: 0.3
-  rotationMultiplier: 1
-  MultiLaneChange: 0
 --- !u!65 &1915560675
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1621,6 +1601,22 @@ Transform:
   - {fileID: 241664651}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1915560679
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1915560673}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 070a8a601daa32e4a8404096d27a12c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  LanePositions: []
+  LaneChangeSpeed: 0.25
+  rotationMultiplier: 1
+  MultiLaneChange: 0
 --- !u!1 &2082115263
 GameObject:
   m_ObjectHideFlags: 0
