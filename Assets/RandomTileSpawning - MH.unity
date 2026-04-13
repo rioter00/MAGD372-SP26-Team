@@ -385,6 +385,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AutoForwardMover
   forwardSpeed: 12
+  laneSpacing: 3
+  laneChangeSpeed: 16
+  startingLane: 1
 --- !u!54 &425058776
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -482,7 +485,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!33 &425058779
 MeshFilter:
@@ -546,9 +548,6 @@ MonoBehaviour:
   m_LuxAtDistance: 1
   m_Intensity: 0
   m_InnerSpotPercent: -1
-  m_ShapeWidth: -1
-  m_ShapeHeight: -1
-  m_AspectRatio: -1
   m_SpotIESCutoffPercent: 100
   m_LightDimmer: 1
   m_VolumetricDimmer: 1
@@ -557,6 +556,9 @@ MonoBehaviour:
   m_AffectDiffuse: 1
   m_AffectSpecular: 1
   m_NonLightmappedOnly: 0
+  m_ShapeWidth: 0.01
+  m_ShapeHeight: 0.01
+  m_AspectRatio: -1
   m_ShapeRadius: 0.025
   m_SoftnessScale: 1
   m_UseCustomSpotLightShadowCone: 0
@@ -676,14 +678,14 @@ Light:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1478985436}
   m_Enabled: 1
-  serializedVersion: 12
+  serializedVersion: 11
   m_Type: 1
   m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
   m_Intensity: 100000
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
-  m_CookieSize2D: {x: 0.5, y: 0.5}
+  m_CookieSize: 10
   m_Shadows:
     m_Type: 2
     m_Resolution: -1
@@ -720,7 +722,7 @@ Light:
   m_RenderingLayerMask: 1
   m_Lightmapping: 4
   m_LightShadowCasterMode: 2
-  m_AreaSize: {x: 1, y: 1}
+  m_AreaSize: {x: 0.01, y: 0.01}
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 1
@@ -777,12 +779,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34dcbcf2210a469479cec64e5e349869, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EndlessTileSpawner
-  startingTilePrefab: {fileID: 7244664867962242069, guid: 02321a1ff344f4a45a71678998db7364, type: 3}
+  startingTilePrefab: {fileID: 7244664867962242069, guid: 1a9a9143c482a6e4cac7fc110c88e473, type: 3}
   randomTilePrefabs:
-  - {fileID: 7244664867962242069, guid: 02321a1ff344f4a45a71678998db7364, type: 3}
-  - {fileID: 4805186779880008766, guid: e66a37a10e559b14096e7e70ba4b904d, type: 3}
+  - {fileID: 7244664867962242069, guid: 1a9a9143c482a6e4cac7fc110c88e473, type: 3}
   tilesOnScreen: 6
   startPosition: {x: 0, y: 0, z: 0}
+  destroyDelay: 1
 --- !u!4 &2045440627
 Transform:
   m_ObjectHideFlags: 0

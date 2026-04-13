@@ -121,7 +121,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!65 &4227036916307863871
 BoxCollider:
@@ -245,7 +244,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!65 &9108728177536811694
 BoxCollider:
@@ -320,6 +318,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::RoadTile
   exitPoint: {fileID: 2398154163561753271}
   endTrigger: {fileID: 1208692466965548952}
+  laneCenters:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  spawnSideScenery: 0
+  leftSceneryPoints: []
+  rightSceneryPoints: []
+  sideSceneryPrefabs: []
+  scenerySpawnChance: 0.45
 --- !u!114 &-8850858496584551544
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -327,7 +335,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7666709771941024331}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: adebb90087b914b4d934af0bbc9af2d3, type: 3}
   m_Name: 
@@ -426,7 +434,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!65 &8808530507137071009
 BoxCollider:
@@ -538,7 +545,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!65 &1219557160344207881
 BoxCollider:

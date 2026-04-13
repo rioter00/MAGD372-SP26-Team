@@ -1,15 +1,16 @@
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.AI;
 
 public class EndlessTileSpawner : MonoBehaviour
 {
+    [Header("Tile Prefabs")]
     public RoadTile startingTilePrefab;
     public RoadTile[] randomTilePrefabs;
     public int tilesOnScreen = 6;
     public Vector3 startPosition = Vector3.zero;
+    public float destroyDelay = 1f;
 
-    private Queue<RoadTile> activeTiles = new Queue<RoadTile>();
+    private readonly Queue<RoadTile> activeTiles = new();
     private Vector3 nextSpawnPosition;
 
     private void Start()
@@ -17,9 +18,7 @@ public class EndlessTileSpawner : MonoBehaviour
         nextSpawnPosition = startPosition;
 
         if (startingTilePrefab != null)
-        {
             SpawnTile(startingTilePrefab);
-        }
 
         if (randomTilePrefabs == null || randomTilePrefabs.Length == 0)
         {
@@ -28,9 +27,7 @@ public class EndlessTileSpawner : MonoBehaviour
         }
 
         while (activeTiles.Count < tilesOnScreen)
-        {
             SpawnRandomTile();
-        }
     }
 
     public void SpawnNextTile()
@@ -41,9 +38,7 @@ public class EndlessTileSpawner : MonoBehaviour
         {
             RoadTile oldestTile = activeTiles.Dequeue();
             if (oldestTile != null)
-            {
-                Destroy(oldestTile.gameObject, 1f);
-            }
+                Destroy(oldestTile.gameObject, destroyDelay);
         }
     }
 
@@ -61,12 +56,8 @@ public class EndlessTileSpawner : MonoBehaviour
         activeTiles.Enqueue(newTile);
 
         if (newTile.exitPoint != null)
-        {
             nextSpawnPosition = newTile.exitPoint.position;
-        }
         else
-        {
             nextSpawnPosition += Vector3.forward * 30f;
-        }
     }
 }
