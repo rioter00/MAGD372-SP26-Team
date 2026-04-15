@@ -14,8 +14,8 @@ OcclusionCullingSettings:
 RenderSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 10
-  m_Fog: 0
-  m_FogColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  m_Fog: 1
+  m_FogColor: {r: 0.6232645, g: 0.8867924, b: 0.6714013, a: 1}
   m_FogMode: 3
   m_FogDensity: 0.01
   m_LinearFogStart: 0
@@ -23,10 +23,10 @@ RenderSettings:
   m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
-  m_AmbientIntensity: 1
+  m_AmbientIntensity: 0
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 2100000, guid: 6d0117ad5af21a242ab73a960ee36841, type: 2}
+  m_SkyboxMaterial: {fileID: 2100000, guid: 8497331faf3233941b2a555776c9b36b, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -348,13 +348,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 410087039}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.40821788, y: -0.23456968, z: 0.10938163, w: 0.8754261}
-  m_LocalPosition: {x: 0.27, y: 2.79, z: -0.12}
+  m_LocalRotation: {x: 0.95125127, y: -0.044943467, z: 0.25488698, w: 0.16773133}
+  m_LocalPosition: {x: 0.24, y: 2.91, z: -0.35}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+  m_LocalEulerAnglesHint: {x: 160, y: -30, z: 0}
 --- !u!114 &410087042
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -400,7 +400,39 @@ MonoBehaviour:
   moon: {fileID: 740574126}
   daySky: {fileID: 2100000, guid: 8497331faf3233941b2a555776c9b36b, type: 2}
   nightSky: {fileID: 2100000, guid: 6d0117ad5af21a242ab73a960ee36841, type: 2}
-  rotationSpeed: 10
+  rotationSpeed: 2
+  nightSwitchSunDot: -0.03
+  maxSunIntensity: 1
+  maxMoonIntensity: 0.08
+  noonSunColor: {r: 1, g: 1, b: 1, a: 1}
+  sunsetSunColor: {r: 1, g: 0.55, b: 0.25, a: 1}
+  sunriseSunColor: {r: 1, g: 0.55, b: 0.2, a: 1}
+  dayAmbient: {r: 0.75, g: 0.78, b: 0.82, a: 1}
+  sunsetAmbient: {r: 0.85, g: 0.32, b: 0.16, a: 1}
+  nightAmbient: {r: 0.05, g: 0.06, b: 0.12, a: 1}
+  controlFog: 1
+  dayFog: {r: 0.72, g: 0.82, b: 0.95, a: 1}
+  sunsetFog: {r: 0.44142944, g: 0.6320754, b: 0.35479707, a: 1}
+  twilightFog: {r: 0.22, g: 0.18, b: 0.35, a: 1}
+  nightFog: {r: 0.03, g: 0.04, b: 0.09, a: 1}
+  daySkyTint: {r: 0.5, g: 0.7, b: 1, a: 1}
+  sunsetSkyTint: {r: 1, g: 0.38, b: 0.18, a: 1}
+  sunriseSkyTint: {r: 1, g: 0.5, b: 0.22, a: 1}
+  dayGroundColor: {r: 0.37, g: 0.35, b: 0.32, a: 1}
+  sunsetGroundColor: {r: 0.28, g: 0.16, b: 0.12, a: 1}
+  dayExposure: 1.25
+  sunsetExposure: 0.9
+  duskDayExposure: 0.6
+  dayAtmosphereThickness: 1
+  sunsetAtmosphereThickness: 1.7
+  daySunSize: 0.03
+  sunsetSunSize: 0.06
+  daySunConvergence: 6
+  sunsetSunConvergence: 3
+  nightSkyExposure: 1.2
+  duskNightSkyExposure: 0.35
+  nightSkyTint: {r: 0.75, g: 0.85, b: 1, a: 1}
+  duskNightSkyTint: {r: 0.3, g: 0.5, b: 0.5, a: 1}
 --- !u!1 &740574124
 GameObject:
   m_ObjectHideFlags: 0
@@ -502,7 +534,7 @@ Light:
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
-  m_ColorTemperature: 5000
+  m_ColorTemperature: 12102
   m_UseColorTemperature: 1
   m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
   m_UseBoundingSphereOverride: 0
