@@ -8,6 +8,22 @@ public class LaneMover : MonoBehaviour
     public float rotationMultiplier = 1f;
     public bool MultiLaneChange = false;
 
+    public bool Lane1Open = true;
+    public bool Lane2Open = true;
+    public bool Lane3Open = true;
+    public bool Lane4Open = true;
+
+    public float SpeedIncreaseEverySecond = 0.1f;
+    public float SetSpeed = 5f;
+    public float SpeedMultiplier = 1f;
+    public float Points = 0f;
+
+    public float Rotation;
+
+    public float Speed;
+    float speedTimer;
+    float pointsTimer;
+
     int lane;
     bool changing;
     float turn;
@@ -18,52 +34,91 @@ public class LaneMover : MonoBehaviour
     {
         lane = 0;
         transform.position = LanePositions[lane].position;
+        Speed = SetSpeed * SpeedMultiplier;
     }
 
     void Update()
     {
-        if (!changing)
-        {
-            if (Input.GetKeyDown(KeyCode.A) && lane > 0)
-            {
-                lane -= 1;
-                StartNewLaneRoutine(-1);
-            }
-            if (Input.GetKeyDown(KeyCode.D) && lane < LanePositions.Length - 1)
-            {
-                lane += 1;
-                StartNewLaneRoutine(1);
-            }
-        }
-        else if (MultiLaneChange)
-        {
-            if (Input.GetKeyDown(KeyCode.A) && lane > 0)
-            {
-                lane -= 1;
-                StartNewLaneRoutine(-1);
-            }
-            if (Input.GetKeyDown(KeyCode.D) && lane < LanePositions.Length - 1)
-            {
-                lane += 1;
-                StartNewLaneRoutine(1);
-            }
-        }
+        HandleLaneInput();
+        UpdateSpeed();
+        AddScore();
 
+        Rotation = transform.rotation.eulerAngles.y;
         float auto = 1f / LaneChangeSpeed;
         turn = Mathf.MoveTowards(turn, targetTurn, Time.deltaTime * auto * 20f);
         transform.rotation = Quaternion.Euler(0, turn, 0);
     }
 
-    void StartNewLaneRoutine(int changeLane)
+    void HandleLaneInput()
+    {
+        if (!changing)
+        {
+            if (Input.GetKeyDown(KeyCode.A) && lane > 0 && LaneIsOpen(lane - 1))
+            {
+                lane -= 1;
+                StartLaneShift(-1);
+            }
+            if (Input.GetKeyDown(KeyCode.D) && lane < LanePositions.Length - 1 && LaneIsOpen(lane + 1))
+            {
+                lane += 1;
+                StartLaneShift(1);
+            }
+        }
+        else if (MultiLaneChange)
+        {
+            if (Input.GetKeyDown(KeyCode.A) && lane > 0 && LaneIsOpen(lane - 1))
+            {
+                lane -= 1;
+                StartLaneShift(-1);
+            }
+            if (Input.GetKeyDown(KeyCode.D) && lane < LanePositions.Length - 1 && LaneIsOpen(lane + 1))
+            {
+                lane += 1;
+                StartLaneShift(1);
+            }
+        }
+    }
+
+    void UpdateSpeed()
+    {
+        speedTimer += Time.deltaTime;
+        if (speedTimer >= 1f)
+        {
+            speedTimer = 0f;
+            SetSpeed += SpeedIncreaseEverySecond;
+            Speed = SetSpeed * SpeedMultiplier;
+        }
+    }
+
+    void AddScore()
+    {
+        pointsTimer += Time.deltaTime;
+        if (pointsTimer >= 1f)
+        {
+            pointsTimer = 0f;
+            Points += Speed;
+        }
+    }
+
+ 
+    bool LaneIsOpen(int index)
+    {
+        if (index == 0) return Lane1Open;
+        if (index == 1) return Lane2Open;
+        if (index == 2) return Lane3Open;
+        if (index == 3) return Lane4Open;
+        return true;
+    }
+
+    void StartLaneShift(int changeLane)
     {
         if (laneRoutine != null)
-        {
             StopCoroutine(laneRoutine);
 
-        }
         laneRoutine = StartCoroutine(ChangeLane(changeLane));
     }
 
+ 
     IEnumerator ChangeLane(int changeLane)
     {
         changing = true;
