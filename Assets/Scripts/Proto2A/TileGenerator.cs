@@ -1,37 +1,44 @@
 using UnityEngine;
 using System.Collections.Generic;
 
+public enum TileType
+{
+    Straight,
+    Left,
+    Right
+}
+
 public class TileGenerator : MonoBehaviour
 {
-    public GameObject[] straightTiles;
-    public GameObject[] leftTiles;
-    public GameObject[] rightTiles;
+    public GameObject[] StraightTiles;
+    public GameObject[] LeftTiles;
+    public GameObject[] RightTiles;
 
     public int maxTiles = 10;
 
     private int currentCount = 0;
     private Transform currentSpawnPoint;
 
+    private TileType lastTileType = TileType.Straight;
+
     public void StartGenerating()
     {
         currentCount = 0;
-        currentSpawnPoint = this.transform;
+        currentSpawnPoint = transform;
+        lastTileType = TileType.Straight;
         SpawnNextTile();
     }
 
     void SpawnNextTile()
     {
         if (currentCount >= maxTiles)
-        {
-            Debug.Log("Finished generating tiles.");
             return;
-        }
 
-        GameObject nextTile = GetRandomTile();
+        GameObject nextTile = GetNextTile();
 
         if (nextTile == null)
         {
-            Debug.LogError("No tile available!");
+            Debug.LogError("No valid tile");
             return;
         }
 
@@ -40,7 +47,7 @@ public class TileGenerator : MonoBehaviour
 
         if (nextSpawn == null)
         {
-            Debug.LogError("SpawnPoint not found");
+            Debug.LogError("SpawnPoint missing");
             return;
         }
 
@@ -49,20 +56,35 @@ public class TileGenerator : MonoBehaviour
         SpawnNextTile();
     }
 
-    GameObject GetRandomTile()
+    GameObject GetNextTile()
     {
-        List<GameObject[]> validTiles = new List<GameObject[]>();
+        List<(GameObject[] tiles, TileType type)> validOptions = new List<(GameObject[], TileType)>();
 
-        if (straightTiles.Length > 0) validTiles.Add(straightTiles);
-        if (leftTiles.Length > 0) validTiles.Add(leftTiles);
-        if (rightTiles.Length > 0) validTiles.Add(rightTiles);
-
-        if (validTiles.Count == 0)
+        switch (lastTileType)
         {
-            return null;
+            case TileType.Left:
+                if (StraightTiles.Length > 0) validOptions.Add((StraightTiles, TileType.Straight));
+                if (RightTiles.Length > 0) validOptions.Add((RightTiles, TileType.Right));
+                break;
+
+            case TileType.Right:
+                if (StraightTiles.Length > 0) validOptions.Add((StraightTiles, TileType.Straight));
+                if (LeftTiles.Length > 0) validOptions.Add((LeftTiles, TileType.Left));
+                break;
+
+            case TileType.Straight:
+                if (StraightTiles.Length > 0) validOptions.Add((StraightTiles, TileType.Straight));
+                if (LeftTiles.Length > 0) validOptions.Add((LeftTiles, TileType.Left));
+                if (RightTiles.Length > 0) validOptions.Add((RightTiles, TileType.Right));
+                break;
         }
 
-        GameObject[] chosenArray = validTiles[Random.Range(0, validTiles.Count)];
-        return chosenArray[Random.Range(0, chosenArray.Length)];
+        if (validOptions.Count == 0)
+            return null;
+
+        var choice = validOptions[Random.Range(0, validOptions.Count)];
+        lastTileType = choice.type;
+
+        return choice.tiles[Random.Range(0, choice.tiles.Length)];
     }
 }
