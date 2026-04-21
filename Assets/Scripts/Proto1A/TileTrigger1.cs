@@ -18,17 +18,15 @@ public class TileTrigger1 : MonoBehaviour
         if (other.CompareTag("Player") && !hasSpawned)
         {
             hasSpawned = true;
-
             GameObject nextTile = GetRandomTile();
 
             if (nextTile == null)
             {
-                Debug.LogError("No tile available to spawn!");
+                Debug.LogError("No tile available");
                 return;
             }
 
             Instantiate(nextTile, spawnPoint.position, spawnPoint.rotation);
-
             Destroy(transform.parent.gameObject, TileLife);
         }
     }
@@ -43,7 +41,7 @@ public class TileTrigger1 : MonoBehaviour
 
         if (validTiles.Count == 0)
         {
-            Debug.LogError("No tiles assigned in inspector!");
+            Debug.LogError("No tiles assigned");
             return null;
         }
 
