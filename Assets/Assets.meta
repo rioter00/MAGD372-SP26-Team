@@ -1,5 +1,9 @@
 fileFormatVersion: 2
-guid: 87b7b430944215a44a6c4ca01d894fb4
+<<<<<<<< HEAD:Assets/TutorialInfo.meta
+guid: 06dc569cdd9ec984bae8dfacdea3a987
+========
+guid: 8d67fbc17495c4f21b8ab394f38920ff
+>>>>>>>> main:Assets/Assets.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}
