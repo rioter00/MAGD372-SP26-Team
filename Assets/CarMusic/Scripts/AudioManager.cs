@@ -5,15 +5,15 @@ using System.Collections;
 
 public class AudioManager : MonoBehaviour
 {
-    [Header("Audio Sources")]
+    //Sources
     public AudioSource musicSource;
     public AudioSource staticSource;
 
-    [Header("Audio Clips")]
+    //Clips
     public AudioClip staticClip;
     public AudioClip[] tracks;
 
-    [Header("UI")]
+    //Canvas
     public Slider volumeSlider;
     public TextMeshProUGUI trackNameText;
 
