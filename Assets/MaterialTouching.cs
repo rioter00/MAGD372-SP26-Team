@@ -25,10 +25,10 @@ public class MaterialTouching : MonoBehaviour
             if (hit.gameObject == this.gameObject)
                 continue;
 
-            Renderer renderer = hit.GetComponent<Renderer>();
-            if (renderer != null && renderer.sharedMaterial != null)
+            Renderer r = hit.GetComponent<Renderer>();
+            if (r != null && r.sharedMaterial != null)
             {
-                TouchedMaterial = renderer.sharedMaterial.name;
+                TouchedMaterial = r.sharedMaterial.name;
                 break;
             }
         }
