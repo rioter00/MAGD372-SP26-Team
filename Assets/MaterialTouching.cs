@@ -26,11 +26,11 @@ public class MaterialTouching : MonoBehaviour
                 continue;
 
             Renderer renderer = hit.GetComponent<Renderer>();
-          
-            
+            if (renderer != null && renderer.sharedMaterial != null)
+            {
                 TouchedMaterial = renderer.sharedMaterial.name;
-               
-            
+                break;
+            }
         }
     }
 }
