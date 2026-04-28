@@ -170,10 +170,7 @@ MonoBehaviour:
       enabled: 0
       useMipBias: 0
       advancedUpscalersByPriority: 
-<<<<<<< HEAD
-=======
       advancedUpscalerNames: []
->>>>>>> 32327d8f1fdb0c0e9d25702dc86d8ed73a2dd056
       DLSSPerfQualitySetting: 0
       DLSSInjectionPoint: 0
       TAAUInjectionPoint: 0
@@ -363,11 +360,7 @@ MonoBehaviour:
   m_CompositorCustomVolumeComponentsList:
     m_InjectionPoint: 1
     m_CustomPostProcessTypesAsString: []
-<<<<<<< HEAD
-  m_Version: 25
-=======
   m_Version: 26
->>>>>>> 32327d8f1fdb0c0e9d25702dc86d8ed73a2dd056
   m_ObsoleteFrameSettings:
     overrides: 0
     enableShadow: 0
