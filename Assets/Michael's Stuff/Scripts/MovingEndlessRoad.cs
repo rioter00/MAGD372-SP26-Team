@@ -10,7 +10,7 @@ public class MovingEndlessRoad : MonoBehaviour
     [Header("Track Setup")]
     public int minimumTilesOnScreen = 4;
     public Vector3 firstTilePosition = Vector3.zero;
-    public float tileLength = 240f;
+    public float fallbackTileLength = 240f;
 
     [Header("Player / Camera Anchor")]
     public Transform playerAnchor;
@@ -18,7 +18,7 @@ public class MovingEndlessRoad : MonoBehaviour
 
     [Header("Spawn / Recycle Distances")]
     public float spawnAheadDistance = 700f;
-    public float recycleWhenEndZIsBelow = -100f;
+    public float recycleWhenEndZIsBelow = -40f;
 
     [Header("Movement")]
     public RunnerSpeedSource speedSource;
@@ -37,13 +37,9 @@ public class MovingEndlessRoad : MonoBehaviour
         }
 
         if (startingTilePrefab != null)
-        {
             SpawnTileAt(startingTilePrefab, firstTilePosition);
-        }
         else
-        {
             SpawnRandomTileAtFront();
-        }
 
         EnsureEnoughRoadAhead();
     }
@@ -124,7 +120,10 @@ public class MovingEndlessRoad : MonoBehaviour
         if (frontMostTile == null)
             return firstTilePosition;
 
-        return frontMostTile.transform.position + Vector3.forward * tileLength;
+        if (frontMostTile.exitPoint != null)
+            return frontMostTile.exitPoint.position;
+
+        return frontMostTile.transform.position + Vector3.forward * fallbackTileLength;
     }
 
     private void SpawnTileAt(RoadTile prefab, Vector3 position)
