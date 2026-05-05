@@ -49,45 +49,28 @@ public class ReworkedSpeedSource : RunnerSpeedSource
 
     protected virtual void Update()
     {
-        if (!runStarted)
+        currentSpeed = Mathf.MoveTowards(
+            currentSpeed,
+            GetTargetSpeed(),
+            startupAcceleration * Time.deltaTime
+        );
+
+        currentSpeed += speedIncreaser * Time.deltaTime;
+        if (mt.name == "Ice_15")
         {
-            currentSpeed = Mathf.MoveTowards(
-                currentSpeed,
-                0f,
-                startupAcceleration * Time.deltaTime
-            );
-            return;
+            currentSpeed *= ICE_Multiplier;
         }
-
-        // 1. STARTUP PHASE — accelerate to cruise speed
-        if (currentSpeed < startupCruiseSpeed)
+        else if (mt.name == "Snowy_Concrete_Pavement_3")
         {
-            currentSpeed = Mathf.MoveTowards(
-                currentSpeed,
-                startupCruiseSpeed,
-                startupAcceleration * Time.deltaTime
-            );
+            currentSpeed *= SNOW_Multiplier;
         }
-        else
+        else if (mt.name == "Gravel_11")
         {
-            // 2. AFTER startup is complete ? increase speed over time
-            currentSpeed += speedIncreaser * Time.deltaTime;
+            currentSpeed *= GRAVEL_Multiplier;
         }
-
-        // 3. TERRAIN MULTIPLIERS
-        if (mt != null)
+        else if (mt.name == "Beach_Sand_1")
         {
-            if (mt.name == "Ice_15")
-                currentSpeed *= ICE_Multiplier;
-
-            else if (mt.name == "Snowy_Concrete_Pavement_3")
-                currentSpeed *= SNOW_Multiplier;
-
-            else if (mt.name == "Gravel_11")
-                currentSpeed *= GRAVEL_Multiplier;
-
-            else if (mt.name == "Beach_Sand_1")
-                currentSpeed *= DIRT_Multiplier;
+            currentSpeed *= DIRT_Multiplier;
         }
     }
 }

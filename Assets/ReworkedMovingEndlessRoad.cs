@@ -20,8 +20,21 @@ public class MovingEndlessRoad2 : MonoBehaviour
     public float spawnAheadDistance = 700f;
     public float recycleWhenEndZIsBelow = -40f;
 
-    [Header("Movement")]
-    public ReworkedSpeedSource speedSource;
+    [Header("Speed Settings")]
+    public float startupCruiseSpeed = 40f;
+    public float startupAcceleration = 15f;
+    public float speedIncreaser = 0.5f;
+    public float speedMultiplier = 1f;
+
+    [Header("Terrain Multipliers")]
+    public MaterialTouching mt;
+    public float ICE_Multiplier = 1.5f;
+    public float SNOW_Multiplier = 0.75f;
+    public float GRAVEL_Multiplier = 0.9f;
+    public float DIRT_Multiplier = 1f;
+
+    private float currentSpeed;
+    private bool runStarted = true;
 
     private readonly Queue<RoadTile> activeTiles = new Queue<RoadTile>();
     private RoadTile frontMostTile;
@@ -31,10 +44,7 @@ public class MovingEndlessRoad2 : MonoBehaviour
         minimumTilesOnScreen = Mathf.Max(1, minimumTilesOnScreen);
 
         if (startingTilePrefab == null && (randomTilePrefabs == null || randomTilePrefabs.Length == 0))
-        {
-            Debug.LogError("MovingEndlessRoad needs at least one tile prefab.");
             return;
-        }
 
         if (startingTilePrefab != null)
             SpawnTileAt(startingTilePrefab, firstTilePosition);
@@ -46,21 +56,55 @@ public class MovingEndlessRoad2 : MonoBehaviour
 
     private void FixedUpdate()
     {
-        float speed = speedSource != null ? speedSource.CurrentSpeed : 0f;
+        UpdateSpeed();
 
-        if (speed > 0f)
+        float distance = currentSpeed * Time.fixedDeltaTime;
+
+        if (distance > 0f)
         {
-            float distance = speed * Time.fixedDeltaTime;
-
             foreach (RoadTile tile in activeTiles)
-            {
                 if (tile != null)
                     tile.MoveBackward(distance);
-            }
         }
 
         RecyclePassedTiles();
         EnsureEnoughRoadAhead();
+    }
+
+    private void UpdateSpeed()
+    {
+        if (!runStarted)
+        {
+            currentSpeed = Mathf.MoveTowards(currentSpeed, 0f, startupAcceleration * Time.deltaTime);
+            return;
+        }
+
+        if (currentSpeed < startupCruiseSpeed)
+        {
+            currentSpeed = Mathf.MoveTowards(
+                currentSpeed,
+                startupCruiseSpeed,
+                startupAcceleration * Time.deltaTime
+            );
+        }
+        else
+        {
+            currentSpeed += speedIncreaser * Time.deltaTime;
+        }
+
+        if (mt != null)
+        {
+            if (mt.name == "Ice_15")
+                currentSpeed *= ICE_Multiplier;
+            else if (mt.name == "Snowy_Concrete_Pavement_3")
+                currentSpeed *= SNOW_Multiplier;
+            else if (mt.name == "Gravel_11")
+                currentSpeed *= GRAVEL_Multiplier;
+            else if (mt.name == "Beach_Sand_1")
+                currentSpeed *= DIRT_Multiplier;
+        }
+
+        currentSpeed *= speedMultiplier;
     }
 
     private void RecyclePassedTiles()
@@ -88,9 +132,7 @@ public class MovingEndlessRoad2 : MonoBehaviour
         float anchorZ = playerAnchor != null ? playerAnchor.position.z : fallbackAnchorZ;
 
         while (activeTiles.Count < minimumTilesOnScreen || FrontEndZ() < anchorZ + spawnAheadDistance)
-        {
             SpawnRandomTileAtFront();
-        }
     }
 
     private float FrontEndZ()
@@ -104,10 +146,7 @@ public class MovingEndlessRoad2 : MonoBehaviour
     private void SpawnRandomTileAtFront()
     {
         if (randomTilePrefabs == null || randomTilePrefabs.Length == 0)
-        {
-            Debug.LogError("No random tile prefabs assigned.");
             return;
-        }
 
         int randomIndex = Random.Range(0, randomTilePrefabs.Length);
         Vector3 spawnPosition = GetNextSpawnPosition();
