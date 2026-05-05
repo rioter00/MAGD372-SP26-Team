@@ -6,8 +6,14 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/MainMenu.unity
+    guid: 06a9d0b3f38a7544b90615e96af0aaab
+  - enabled: 1
+    path: Assets/Michael's Stuff/RandomTileSpawning - MH.unity
+    guid: ed2c8d5a679909d4f9390d4f5c75dd1c
+  - enabled: 1
     path: Assets/Scenes/SUNMOONALPHA.unity
-    guid: 99c9720ab356a0642a771bea13969a05
+    guid: 97e120bca59c9437f8a440dd4e027f96
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0
