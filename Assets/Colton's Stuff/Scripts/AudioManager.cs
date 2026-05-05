@@ -13,8 +13,15 @@ public class AudioManager : MonoBehaviour
     public AudioClip staticClip;
     public AudioClip[] tracks;
 
-    [Header("UI")]
-    public Slider volumeSlider;
+    [Header("UI - Sliders")]
+    public Slider musicVolumeSlider;
+    public Slider staticVolumeSlider;
+
+    [Header("UI - Toggles")]
+    public Toggle musicToggle;
+    public Toggle staticToggle;
+
+    [Header("UI - Text")]
     public TextMeshProUGUI trackNameText;
 
     private int currentTrackIndex = -1;
@@ -22,10 +29,28 @@ public class AudioManager : MonoBehaviour
 
     void Start()
     {
-        if (volumeSlider != null)
+        if (musicVolumeSlider != null)
         {
-            musicSource.volume = volumeSlider.value;
-            volumeSlider.onValueChanged.AddListener(SetVolume);
+            musicSource.volume = musicVolumeSlider.value;
+            musicVolumeSlider.onValueChanged.AddListener(SetMusicVolume);
+        }
+
+        if (staticVolumeSlider != null)
+        {
+            staticSource.volume = staticVolumeSlider.value;
+            staticVolumeSlider.onValueChanged.AddListener(SetStaticVolume);
+        }
+
+        if (musicToggle != null)
+        {
+            musicToggle.isOn = true;
+            musicToggle.onValueChanged.AddListener(SetMusicState);
+        }
+
+        if (staticToggle != null)
+        {
+            staticToggle.isOn = true;
+            staticToggle.onValueChanged.AddListener(SetStaticState);
         }
 
         UpdateTrackUI();
@@ -35,15 +60,11 @@ public class AudioManager : MonoBehaviour
     {
         if (isSwitching) return;
 
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            NextTrack();
-        }
-
         if (Input.GetKeyDown(KeyCode.E))
-        {
+            NextTrack();
+
+        if (Input.GetKeyDown(KeyCode.R))
             PreviousTrack();
-        }
     }
 
     void NextTrack()
@@ -51,9 +72,7 @@ public class AudioManager : MonoBehaviour
         currentTrackIndex++;
 
         if (currentTrackIndex >= tracks.Length)
-        {
             currentTrackIndex = -1;
-        }
 
         StartCoroutine(SwitchTrack());
     }
@@ -63,9 +82,7 @@ public class AudioManager : MonoBehaviour
         currentTrackIndex--;
 
         if (currentTrackIndex < -1)
-        {
             currentTrackIndex = tracks.Length - 1;
-        }
 
         StartCoroutine(SwitchTrack());
     }
@@ -73,33 +90,61 @@ public class AudioManager : MonoBehaviour
     IEnumerator SwitchTrack()
     {
         isSwitching = true;
+
         musicSource.Stop();
 
-        if (staticClip != null && staticSource != null)
+        if (staticToggle == null || staticToggle.isOn)
         {
-            staticSource.clip = staticClip;
-            staticSource.Play();
-
-            yield return new WaitForSeconds(staticClip.length);
+            if (staticClip != null)
+            {
+                staticSource.clip = staticClip;
+                staticSource.Play();
+                yield return new WaitForSeconds(staticClip.length);
+            }
         }
 
-        if (currentTrackIndex == -1)
-        {
-            musicSource.clip = null;
-        }
-        else
+        if (currentTrackIndex != -1 && (musicToggle == null || musicToggle.isOn))
         {
             musicSource.clip = tracks[currentTrackIndex];
             musicSource.Play();
+        }
+        else
+        {
+            musicSource.clip = null;
         }
 
         UpdateTrackUI();
         isSwitching = false;
     }
 
-    void SetVolume(float value)
+    void SetMusicVolume(float value)
     {
         musicSource.volume = value;
+    }
+
+    void SetStaticVolume(float value)
+    {
+        staticSource.volume = value;
+    }
+
+    void SetMusicState(bool isOn)
+    {
+        if (!isOn)
+        {
+            musicSource.Stop();
+        }
+        else if (currentTrackIndex != -1 && musicSource.clip != null)
+        {
+            musicSource.Play();
+        }
+    }
+
+    void SetStaticState(bool isOn)
+    {
+        if (!isOn)
+        {
+            staticSource.Stop();
+        }
     }
 
     void UpdateTrackUI()
@@ -107,12 +152,8 @@ public class AudioManager : MonoBehaviour
         if (trackNameText == null) return;
 
         if (currentTrackIndex == -1)
-        {
             trackNameText.text = "Radio Off";
-        }
         else
-        {
             trackNameText.text = "Now Playing: " + tracks[currentTrackIndex].name;
-        }
     }
 }
