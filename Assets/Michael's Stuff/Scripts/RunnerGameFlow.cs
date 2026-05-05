@@ -6,6 +6,7 @@ public class RunnerGameFlow : MonoBehaviour
     [Header("Objects To Hide / Show")]
     public GameObject[] hideWhenStartPressed;
     public GameObject[] showWhenStartPressed;
+    public float distancePoints;
 
     [Header("Speed")]
     public RunnerSpeedSource speedSource;
@@ -16,6 +17,7 @@ public class RunnerGameFlow : MonoBehaviour
 
     private Coroutine startRoutine;
 
+
     private void Start()
     {
         if (speedSource != null)
@@ -25,6 +27,11 @@ public class RunnerGameFlow : MonoBehaviour
 
         if (autoStartForTesting)
             OnStartPressed();
+    }
+
+    public void Update()
+    {
+            distancePoints += speedSource.CurrentSpeed * Time.deltaTime;     
     }
 
     public void OnStartPressed()
