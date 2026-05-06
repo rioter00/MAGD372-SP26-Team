@@ -376,7 +376,7 @@ GameObject:
   - component: {fileID: 7244664867962242069}
   - component: {fileID: 4634164737284426481}
   m_Layer: 0
-  m_Name: 11-GRC
+  m_Name: RoadTile_11
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -429,19 +429,6 @@ MonoBehaviour:
   - {fileID: 4919823192782731338}
   - {fileID: 2598904427522244367}
   - {fileID: 628382878560264154}
-  laneRenderers:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  leftSceneryPoints:
-  - {fileID: 4742486087173118883}
-  - {fileID: 2164395704432250864}
-  - {fileID: 8461415534205458369}
-  rightSceneryPoints:
-  - {fileID: 3074663800187375414}
-  - {fileID: 8244948405358686913}
-  - {fileID: 622904867472409909}
 --- !u!54 &4634164737284426481
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1130,7 +1117,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 4ad660b3e11c4854d8dffd9dc789d841, type: 2}
+  - {fileID: 2100000, guid: 601c8a4705b17c845a8a01834325e3af, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1527,8 +1514,8 @@ Transform:
   m_GameObject: {fileID: 4567339937114697454}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 22.5, y: 0, z: 120}
-  m_LocalScale: {x: 14.502245, y: 1, z: 240}
+  m_LocalPosition: {x: 22.9, y: 0, z: 120}
+  m_LocalScale: {x: 15.951019, y: 1, z: 240}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7920395856644289768}
