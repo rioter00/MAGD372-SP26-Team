@@ -302,7 +302,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca165f7d6a5a049e7929e5b731c0b923, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::WheelRotate
-  wheelTransform: {fileID: 0}
+  wheelTransform: {fileID: 1125700652}
   rotationSpeed: 100
 --- !u!114 &52274271
 MonoBehaviour:
@@ -1070,6 +1070,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::RunnerGameFlow
   hideWhenStartPressed: []
   showWhenStartPressed: []
+  distancePoints: 0
   speedSource: {fileID: 179592450}
   startDelaySeconds: 3
   autoStartForTesting: 1
