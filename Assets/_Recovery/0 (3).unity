@@ -1330,7 +1330,7 @@ MonoBehaviour:
   speedIncreaser: 0.5
   speedMultiplier: 1
   mt: {fileID: 1900785153}
-  ICE_Multiplier: 1.4
+  ICE_Multiplier: 15
   SNOW_Multiplier: 0.75
   GRAVEL_Multiplier: 0.9
   DIRT_Multiplier: 1

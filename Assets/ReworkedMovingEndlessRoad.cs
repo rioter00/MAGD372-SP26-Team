@@ -50,22 +50,7 @@ public class MovingEndlessRoad2 : MonoBehaviour
         EnsureEnoughRoadAhead();
     }
 
-    private void FixedUpdate()
-    {
-        UpdateSpeed();
-
-        float distance = currentSpeed * Time.fixedDeltaTime;
-
-        if (distance > 0f)
-        {
-            foreach (RoadTile tile in activeTiles)
-                if (tile != null)
-                    tile.MoveBackward(distance);
-        }
-
-        RecyclePassedTiles();
-        EnsureEnoughRoadAhead();
-    }
+    
 
     private void UpdateTerrainMultiplier()
     {
@@ -83,6 +68,26 @@ public class MovingEndlessRoad2 : MonoBehaviour
         else if (mt.TouchedMaterial == "Beach_Sand_1")
             terrainMultiplier = DIRT_Multiplier;
     }
+
+    private void FixedUpdate()
+    {
+        UpdateSpeed();
+
+        float finalSpeed = currentSpeed * terrainMultiplier * speedMultiplier;
+        float distance = finalSpeed * Time.fixedDeltaTime;
+
+        if (distance > 0f)
+        {
+            foreach (RoadTile tile in activeTiles)
+                if (tile != null)
+                    tile.MoveBackward(distance);
+        }
+
+        RecyclePassedTiles();
+        EnsureEnoughRoadAhead();
+    }
+
+
 
     private void UpdateSpeed()
     {
@@ -106,10 +111,8 @@ public class MovingEndlessRoad2 : MonoBehaviour
         {
             currentSpeed += speedIncreaser * Time.deltaTime;
         }
-
-        currentSpeed *= terrainMultiplier;
-        currentSpeed *= speedMultiplier;
     }
+
 
     private void RecyclePassedTiles()
     {
