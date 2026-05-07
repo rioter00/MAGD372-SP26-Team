@@ -8,24 +8,32 @@ public class AudioManager : MonoBehaviour
     [Header("Audio Sources")]
     public AudioSource musicSource;
     public AudioSource staticSource;
+    public AudioSource honkSource;
 
-    [Header("Audio Clips")]
+    [Header("Music")]
     public AudioClip staticClip;
     public AudioClip[] tracks;
 
-    [Header("UI - Sliders")]
+    [Header("Honk")]
+    public AudioClip honkClip;
+
+    [Header("Sliders")]
     public Slider musicVolumeSlider;
     public Slider staticVolumeSlider;
+    public Slider honkVolumeSlider;
 
-    [Header("UI - Toggles")]
+    [Header("Toggles")]
     public Toggle musicToggle;
     public Toggle staticToggle;
+    public Toggle honkToggle;
 
-    [Header("UI - Text")]
+    [Header("Text")]
     public TextMeshProUGUI trackNameText;
+    public TextMeshProUGUI honkCounterText;
 
     private int currentTrackIndex = -1;
     private bool isSwitching = false;
+    private int honkCount = 0;
 
     void Start()
     {
@@ -41,6 +49,12 @@ public class AudioManager : MonoBehaviour
             staticVolumeSlider.onValueChanged.AddListener(SetStaticVolume);
         }
 
+        if (honkVolumeSlider != null)
+        {
+            honkSource.volume = honkVolumeSlider.value;
+            honkVolumeSlider.onValueChanged.AddListener(SetHonkVolume);
+        }
+
         if (musicToggle != null)
         {
             musicToggle.isOn = true;
@@ -53,18 +67,34 @@ public class AudioManager : MonoBehaviour
             staticToggle.onValueChanged.AddListener(SetStaticState);
         }
 
+        if (honkToggle != null)
+        {
+            honkToggle.isOn = true;
+        }
+
         UpdateTrackUI();
+        UpdateHonkUI();
     }
 
     void Update()
     {
-        if (isSwitching) return;
+        if (!isSwitching)
+        {
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                NextTrack();
+            }
 
-        if (Input.GetKeyDown(KeyCode.E))
-            NextTrack();
+            if (Input.GetKeyDown(KeyCode.R))
+            {
+                PreviousTrack();
+            }
+        }
 
-        if (Input.GetKeyDown(KeyCode.R))
-            PreviousTrack();
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            Honk();
+        }
     }
 
     void NextTrack()
@@ -72,7 +102,9 @@ public class AudioManager : MonoBehaviour
         currentTrackIndex++;
 
         if (currentTrackIndex >= tracks.Length)
+        {
             currentTrackIndex = -1;
+        }
 
         StartCoroutine(SwitchTrack());
     }
@@ -82,7 +114,9 @@ public class AudioManager : MonoBehaviour
         currentTrackIndex--;
 
         if (currentTrackIndex < -1)
+        {
             currentTrackIndex = tracks.Length - 1;
+        }
 
         StartCoroutine(SwitchTrack());
     }
@@ -99,11 +133,13 @@ public class AudioManager : MonoBehaviour
             {
                 staticSource.clip = staticClip;
                 staticSource.Play();
-                yield return new WaitForSeconds(staticClip.length);
+
+                yield return new WaitForSecondsRealtime(staticClip.length);
             }
         }
 
-        if (currentTrackIndex != -1 && (musicToggle == null || musicToggle.isOn))
+        if (currentTrackIndex != -1 &&
+            (musicToggle == null || musicToggle.isOn))
         {
             musicSource.clip = tracks[currentTrackIndex];
             musicSource.Play();
@@ -114,7 +150,49 @@ public class AudioManager : MonoBehaviour
         }
 
         UpdateTrackUI();
+
         isSwitching = false;
+    }
+
+    void Honk()
+    {
+        if (honkToggle != null && !honkToggle.isOn)
+        {
+            return;
+        }
+
+        if (honkClip != null)
+        {
+            honkSource.PlayOneShot(honkClip);
+
+            honkCount++;
+
+            UpdateHonkUI();
+        }
+    }
+
+    void UpdateTrackUI()
+    {
+        if (trackNameText == null)
+            return;
+
+        if (currentTrackIndex == -1)
+        {
+            trackNameText.text = "Radio Off";
+        }
+        else
+        {
+            trackNameText.text =
+                "Now Playing: " + tracks[currentTrackIndex].name;
+        }
+    }
+
+    void UpdateHonkUI()
+    {
+        if (honkCounterText != null)
+        {
+            honkCounterText.text = "Honks: " + honkCount;
+        }
     }
 
     void SetMusicVolume(float value)
@@ -127,15 +205,24 @@ public class AudioManager : MonoBehaviour
         staticSource.volume = value;
     }
 
+    void SetHonkVolume(float value)
+    {
+        honkSource.volume = value;
+    }
+
     void SetMusicState(bool isOn)
     {
         if (!isOn)
         {
             musicSource.Stop();
         }
-        else if (currentTrackIndex != -1 && musicSource.clip != null)
+        else
         {
-            musicSource.Play();
+            if (currentTrackIndex != -1 &&
+                musicSource.clip != null)
+            {
+                musicSource.Play();
+            }
         }
     }
 
@@ -145,15 +232,5 @@ public class AudioManager : MonoBehaviour
         {
             staticSource.Stop();
         }
-    }
-
-    void UpdateTrackUI()
-    {
-        if (trackNameText == null) return;
-
-        if (currentTrackIndex == -1)
-            trackNameText.text = "Radio Off";
-        else
-            trackNameText.text = "Now Playing: " + tracks[currentTrackIndex].name;
     }
 }
