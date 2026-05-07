@@ -35,6 +35,8 @@ public class AudioManager : MonoBehaviour
     private bool isSwitching = false;
     private int honkCount = 0;
 
+    public int numOfHonks => honkCount;
+
     void Start()
     {
         if (musicVolumeSlider != null)
