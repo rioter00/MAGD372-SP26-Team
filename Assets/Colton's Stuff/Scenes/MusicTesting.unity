@@ -2147,7 +2147,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::UIManager
   menuCanvas: {fileID: 1600044598}
   hudCanvas: {fileID: 803232713}
-  isPaused: 0
 --- !u!1 &1016548338
 GameObject:
   m_ObjectHideFlags: 0
@@ -4006,9 +4005,6 @@ MonoBehaviour:
   honkToggle: {fileID: 827743979}
   trackNameText: {fileID: 1415529927}
   honkCounterText: {fileID: 1388350661}
-  currentTrackIndex: -1
-  isSwitching: 0
-  honkCount: 0
 --- !u!1 &2066483807
 GameObject:
   m_ObjectHideFlags: 0
