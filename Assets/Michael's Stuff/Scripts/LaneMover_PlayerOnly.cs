@@ -66,6 +66,11 @@ public class LaneMover_PlayerOnly : MonoBehaviour
     }
     void Update()
     {
+        if (playerDead)
+        {
+            // WHOEVR is doing the death screen, you can do that here!
+            Time.timeScale = 0f;
+        }
         points += movingScript.currentSpeed * movingScript.terrainMultiplier * Time.deltaTime;
         HandleLaneInput();
 
