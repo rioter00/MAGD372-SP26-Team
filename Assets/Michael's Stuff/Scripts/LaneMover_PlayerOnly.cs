@@ -44,21 +44,21 @@ public class LaneMover_PlayerOnly : MonoBehaviour
     {
         if (lane == 0)
         {
-            ChangeLane(1);
+            StartLaneShift(lane++);
         }
         else if (lane == 4)
         {
-            ChangeLane(3);
+            StartLaneShift(lane--);
         }
         else
         {
             if (Random.value < 0.5f)
             {
-                ChangeLane(lane - 1);
+                StartLaneShift(lane++);
             }
             else
             {
-                ChangeLane(lane + 1);
+                StartLaneShift(lane--);
             }
         }
     }
