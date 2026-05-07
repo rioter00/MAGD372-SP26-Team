@@ -6,15 +6,19 @@ public class LaneMover_PlayerOnly : MonoBehaviour
 {
     public float points;
     public bool playerDead;
-    public int timeOnDirt;
-    public int timeOnSnow;
-    public int oilOnWindshield;
+    public float timeOnDirt;
+    public float timeOnSnow;
+    public float oilOnWindshield;
+    public int oil_ANIMATION_Frame;
+    public int dirt_ANIMATION_Frame;
+    public int snow_ANIMATION_Frame;
     public MovingEndlessRoad2 movingScript;
     [Header("Lane Setup")]
     public Transform[] LanePositions;
     public float LaneChangeSpeed = 0.25f;
     public float rotationMultiplier = 1f;
     public bool MultiLaneChange = false;
+    public MaterialTouching mt;
 
     [Header("Lane Availability")]
     public bool Lane1Open = true;
@@ -66,12 +70,33 @@ public class LaneMover_PlayerOnly : MonoBehaviour
     }
     void Update()
     {
+        timeOnDirt -= Time.deltaTime;
+        timeOnSnow -= Time.deltaTime;
+        if(timeOnDirt < 0) timeOnDirt = 0;
+        if(timeOnSnow < 0) timeOnSnow = 0;
+
+        dirt_ANIMATION_Frame = Mathf.CeilToInt(timeOnDirt);
+        snow_ANIMATION_Frame = Mathf.CeilToInt(timeOnSnow);
+
+        if (mt.TouchedMaterial == "Dry_Ground_10")
+        {
+            timeOnDirt += Time.deltaTime*2;
+        }
+        else if(mt.TouchedMaterial == "Snowy_Concrete_Pavement_3")
+        {
+            timeOnSnow += Time.deltaTime*2;
+        } else { 
+        }
+
+            oilOnWindshield -= Time.deltaTime * 3f;
+            oil_ANIMATION_Frame = Mathf.CeilToInt(oilOnWindshield);
+
         if (playerDead)
         {
             // WHOEVR is doing the death screen, you can do that here!
             Time.timeScale = 0f;
         }
-        points += movingScript.currentSpeed * movingScript.terrainMultiplier * Time.deltaTime;
+        points += Mathf.Ceil(movingScript.currentSpeed * movingScript.terrainMultiplier * Time.deltaTime);
         HandleLaneInput();
 
         Rotation = transform.rotation.eulerAngles.y;
