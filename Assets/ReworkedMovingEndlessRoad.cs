@@ -33,7 +33,7 @@ public class MovingEndlessRoad2 : MonoBehaviour
     public float GRAVEL_Multiplier = 0.9f;
     public float DIRT_Multiplier = 1f;
 
-    private float currentSpeed;
+    public float currentSpeed;
     private bool runStarted = true;
 
     private readonly Queue<RoadTile> activeTiles = new Queue<RoadTile>();
@@ -73,6 +73,7 @@ public class MovingEndlessRoad2 : MonoBehaviour
 
     private void UpdateSpeed()
     {
+       
         if (!runStarted)
         {
             currentSpeed = Mathf.MoveTowards(currentSpeed, 0f, startupAcceleration * Time.deltaTime);
@@ -94,13 +95,13 @@ public class MovingEndlessRoad2 : MonoBehaviour
 
         if (mt != null)
         {
-            if (mt.name == "Ice_15")
+            if (mt.TouchedMaterial == "Ice_15")
                 currentSpeed *= ICE_Multiplier;
-            else if (mt.name == "Snowy_Concrete_Pavement_3")
+            else if (mt.TouchedMaterial == "Snowy_Concrete_Pavement_3")
                 currentSpeed *= SNOW_Multiplier;
-            else if (mt.name == "Gravel_11")
+            else if (mt.TouchedMaterial == "Gravel_11")
                 currentSpeed *= GRAVEL_Multiplier;
-            else if (mt.name == "Beach_Sand_1")
+            else if (mt.TouchedMaterial == "Beach_Sand_1")
                 currentSpeed *= DIRT_Multiplier;
         }
 

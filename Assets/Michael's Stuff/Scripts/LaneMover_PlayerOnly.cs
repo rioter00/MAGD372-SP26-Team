@@ -1,13 +1,15 @@
 using UnityEngine;
 using System.Collections;
+using System.IO;
 
 public class LaneMover_PlayerOnly : MonoBehaviour
 {
+    public float points;
     public bool playerDead;
     public int timeOnDirt;
     public int timeOnSnow;
     public int oilOnWindshield;
-
+    public MovingEndlessRoad2 movingScript;
     [Header("Lane Setup")]
     public Transform[] LanePositions;
     public float LaneChangeSpeed = 0.25f;
@@ -64,6 +66,7 @@ public class LaneMover_PlayerOnly : MonoBehaviour
     }
     void Update()
     {
+        points += movingScript.currentSpeed * movingScript.speedMultiplier * Time.deltaTime;
         HandleLaneInput();
 
         Rotation = transform.rotation.eulerAngles.y;
@@ -153,4 +156,8 @@ public class LaneMover_PlayerOnly : MonoBehaviour
         targetTurn = 0f;
         changing = false;
     }
+
+
+
+
 }
