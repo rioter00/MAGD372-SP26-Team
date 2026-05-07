@@ -169,7 +169,7 @@ public class MovingEndlessRoad2 : MonoBehaviour
         if (frontMostTile.exitPoint != null)
             return frontMostTile.exitPoint.position;
 
-        return frontMostTile.transform.position + Vector3.forward * fallbackTileLength;
+        return frontMostTile.transform.position + Vector3.forward * fallbackTileLength * terrainMultiplier;
     }
 
     private void SpawnTileAt(RoadTile prefab, Vector3 position)

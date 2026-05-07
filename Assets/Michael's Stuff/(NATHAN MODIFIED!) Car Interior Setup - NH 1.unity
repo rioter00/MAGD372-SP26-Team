@@ -1242,7 +1242,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2041519098}
-  - component: {fileID: 2041519099}
   - component: {fileID: 2041519100}
   m_Layer: 0
   m_Name: RoadSystem
@@ -1266,36 +1265,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1149829518}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2041519099
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2041519097}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c42c545e2e6823e46b87472044e7118c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::MovingEndlessRoad
-  startingTilePrefab: {fileID: 7244664867962242069, guid: 53da9a95da4d19440bdd7fdcf1c0f30f, type: 3}
-  randomTilePrefabs:
-  - {fileID: 7244664867962242069, guid: 53da9a95da4d19440bdd7fdcf1c0f30f, type: 3}
-  - {fileID: 2776344758233316468, guid: 460e9b08b7e0e6a45871db027bdeb566, type: 3}
-  - {fileID: 841918282199558821, guid: c0ecc231593f27f4b85aae66a2268bc1, type: 3}
-  - {fileID: 3909468431518382546, guid: 976b016dc4b17504293d52084c3d83ab, type: 3}
-  - {fileID: 5881152160884588878, guid: bb5b605caa2a2324483a0a4732417e85, type: 3}
-  - {fileID: 2569532529643866589, guid: 4db847aad0a47bf469c330a1d6903208, type: 3}
-  - {fileID: 6611422005696641009, guid: 254815eb8afd6f14fabfd9912098503a, type: 3}
-  - {fileID: 3287889625576358149, guid: b363d988cf4ca694f81a0fe66da33361, type: 3}
-  minimumTilesOnScreen: 4
-  firstTilePosition: {x: 0, y: 0, z: 0}
-  fallbackTileLength: 240
-  playerAnchor: {fileID: 1058461276}
-  fallbackAnchorZ: 10
-  spawnAheadDistance: 700
-  recycleWhenEndZIsBelow: 0
-  speedSource: {fileID: 179592450}
 --- !u!114 &2041519100
 MonoBehaviour:
   m_ObjectHideFlags: 0
