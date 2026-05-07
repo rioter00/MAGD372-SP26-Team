@@ -266,6 +266,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1242643274107489240, guid: 602b643b11ab8404f94b494d7609fb98, type: 3}
+      propertyPath: movingScript
+      value: 
+      objectReference: {fileID: 2041519100}
+    - target: {fileID: 1242643274107489240, guid: 602b643b11ab8404f94b494d7609fb98, type: 3}
       propertyPath: MultiLaneChange
       value: 0
       objectReference: {fileID: 0}
@@ -1331,6 +1335,9 @@ MonoBehaviour:
   GRAVEL_Multiplier: 0.9
   DIRT_Multiplier: 1
   currentSpeed: 0
+  runStarted: 1
+  terrainMultiplier: 1
+  frontMostTile: {fileID: 0}
 --- !u!114 &2094126066 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1242643274107489240, guid: 602b643b11ab8404f94b494d7609fb98, type: 3}

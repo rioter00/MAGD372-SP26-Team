@@ -66,7 +66,7 @@ public class LaneMover_PlayerOnly : MonoBehaviour
     }
     void Update()
     {
-        points += movingScript.currentSpeed * movingScript.speedMultiplier * Time.deltaTime;
+        points += movingScript.currentSpeed * movingScript.terrainMultiplier * Time.deltaTime;
         HandleLaneInput();
 
         Rotation = transform.rotation.eulerAngles.y;
