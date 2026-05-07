@@ -3,6 +3,11 @@ using System.Collections;
 
 public class LaneMover_PlayerOnly : MonoBehaviour
 {
+    public bool playerDead;
+    public int timeOnDirt;
+    public int timeOnSnow;
+    public int oilOnWindshield;
+
     [Header("Lane Setup")]
     public Transform[] LanePositions;
     public float LaneChangeSpeed = 0.25f;
@@ -35,7 +40,28 @@ public class LaneMover_PlayerOnly : MonoBehaviour
             transform.position = startPos;
         }
     }
-
+    public void TrafficConeHit()
+    {
+        if (lane == 0)
+        {
+            ChangeLane(1);
+        }
+        else if (lane == 4)
+        {
+            ChangeLane(3);
+        }
+        else
+        {
+            if (Random.value < 0.5f)
+            {
+                ChangeLane(lane - 1);
+            }
+            else
+            {
+                ChangeLane(lane + 1);
+            }
+        }
+    }
     void Update()
     {
         HandleLaneInput();

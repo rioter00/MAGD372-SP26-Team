@@ -3,6 +3,8 @@ using System.Collections;
 
 public class LaneMover : MonoBehaviour
 {
+
+    public bool playerDead = false;
     public Transform[] LanePositions;
     public float LaneChangeSpeed = 0.25f;
     public float rotationMultiplier = 1f;
@@ -37,6 +39,28 @@ public class LaneMover : MonoBehaviour
         Speed = SetSpeed * SpeedMultiplier;
     }
 
+    public void TrafficConeHit()
+    {
+       if(lane == 0)
+        {
+            ChangeLane(1);
+        }
+        else if (lane == 4)
+        {
+            ChangeLane(3);
+        }
+        else
+        {
+            if(Random.value < 0.5f)
+            {
+                ChangeLane(lane - 1);
+            }
+            else
+            {
+                ChangeLane(lane + 1);
+            }
+        }
+    }
     void Update()
     {
         HandleLaneInput();
