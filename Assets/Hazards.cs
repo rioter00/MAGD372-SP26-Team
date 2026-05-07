@@ -22,6 +22,7 @@ public class Hazards : MonoBehaviour
         {
             Debug.Log("TRAFFIC CONE HIT");
             car.TrafficConeHit();
+            car.oilOnWindshield = 7;
         }
         else if (collision.collider.CompareTag("PotHole"))
         {
