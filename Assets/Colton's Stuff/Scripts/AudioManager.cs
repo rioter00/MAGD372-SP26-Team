@@ -185,7 +185,7 @@ public class AudioManager : MonoBehaviour
         else
         {
             trackNameText.text =
-                "Now Playing: " + tracks[currentTrackIndex].name;
+                "Playing: " + tracks[currentTrackIndex].name;
         }
     }
 
