@@ -3752,8 +3752,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1060993343}
     - target: {fileID: 1242643274107489240, guid: 602b643b11ab8404f94b494d7609fb98, type: 3}
+      propertyPath: LaneChangeSpeed
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1242643274107489240, guid: 602b643b11ab8404f94b494d7609fb98, type: 3}
       propertyPath: MultiLaneChange
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1242643274107489240, guid: 602b643b11ab8404f94b494d7609fb98, type: 3}
+      propertyPath: rotationMultiplier
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 1242643274107489240, guid: 602b643b11ab8404f94b494d7609fb98, type: 3}
       propertyPath: 'LanePositions.Array.data[0]'
