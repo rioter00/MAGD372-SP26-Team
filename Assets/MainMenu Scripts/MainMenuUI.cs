@@ -11,7 +11,7 @@ public class MainMenuUI : MonoBehaviour
     public RectTransform controlsButton;
     public RectTransform exitButton;
 
-    public string gameSceneName = "RandomTileSpawning - MH";
+    public string gameSceneName = "Car Interior Setup - NH";
 
     public float flyTime = 0.6f;
     public float flyDistance = 1500f;

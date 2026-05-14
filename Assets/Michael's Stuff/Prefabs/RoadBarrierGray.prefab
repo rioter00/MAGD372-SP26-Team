@@ -12,9 +12,10 @@ GameObject:
   - component: {fileID: 2347478391266281288}
   - component: {fileID: 537929884090364802}
   - component: {fileID: 798520689341751120}
+  - component: {fileID: 2496471135153739702}
   m_Layer: 0
   m_Name: RoadBarrierGray
-  m_TagString: Untagged
+  m_TagString: Hazard
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -91,6 +92,27 @@ MeshRenderer:
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!65 &798520689341751120
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2051354519210185303}
+  m_Material: {fileID: 13400000, guid: 9a1c3d41108057947a527831faddb9c9, type: 2}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 1
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.8237894, y: 0.74521166, z: 0.5495558}
+  m_Center: {x: 0, y: 0.37481567, z: 0.000000044703484}
+--- !u!65 &2496471135153739702
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

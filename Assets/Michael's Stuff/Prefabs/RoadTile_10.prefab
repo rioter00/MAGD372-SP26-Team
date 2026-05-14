@@ -236,7 +236,7 @@ GameObject:
   - component: {fileID: 9068449244611944680}
   m_Layer: 0
   m_Name: Oil Barrel (1)
-  m_TagString: Untagged
+  m_TagString: OilBarrel
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -854,7 +854,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 7f6b3d5bdd95a9b41aa4784eee57525d, type: 2}
+  - {fileID: 2100000, guid: f7d2526e7cef74b4eb1a24d61c12669e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -912,7 +912,7 @@ GameObject:
   - component: {fileID: 637290295105828722}
   m_Layer: 0
   m_Name: Oil Barrel
-  m_TagString: Untagged
+  m_TagString: OilBarrel
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4438,7 +4438,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 7f6b3d5bdd95a9b41aa4784eee57525d, type: 2}
+  - {fileID: 2100000, guid: f7d2526e7cef74b4eb1a24d61c12669e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
