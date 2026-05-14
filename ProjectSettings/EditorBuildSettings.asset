@@ -14,6 +14,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SUNMOONALPHA.unity
     guid: 97e120bca59c9437f8a440dd4e027f96
+  - enabled: 1
+    path: Assets/Michael's Stuff/Car Interior Setup - NH.unity
+    guid: adcf81ff8d08a4636a5340d32eb5656b
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0

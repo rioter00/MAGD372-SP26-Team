@@ -1,9 +1,11 @@
 using UnityEngine;
 using System.Collections;
 using System.IO;
+using System.Linq.Expressions;
 
 public class LaneMover_PlayerOnly : MonoBehaviour
 {
+    private bool hasStoppedTime = false;
     public float points;
     public bool playerDead;
     public float timeOnDirt;
@@ -92,10 +94,12 @@ public class LaneMover_PlayerOnly : MonoBehaviour
             if(oilOnWindshield < 0) oilOnWindshield = 0;
         oil_ANIMATION_Frame = Mathf.CeilToInt(oilOnWindshield);
 
-        if (playerDead)
+        if (playerDead && !hasStoppedTime)
         {
-            // WHOEVR is doing the death screen, you can do that here!
+
+            hasStoppedTime = true;
             Time.timeScale = 0f;
+            
         }
         points += Mathf.Ceil(movingScript.currentSpeed * movingScript.terrainMultiplier * Time.deltaTime);
         HandleLaneInput();

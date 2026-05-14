@@ -3,6 +3,7 @@ using UnityEngine;
 public class Hazards : MonoBehaviour
 {
     public LaneMover_PlayerOnly car;
+    public DeathMenu dm;
     public float distanceOut = 10f;
     public float distanceSTART = 0f;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -22,6 +23,8 @@ public class Hazards : MonoBehaviour
         {
             Debug.Log("HAZARD HIT");
             car.playerDead = true;
+            dm.ShowDeathScreen();
+            
         }
         else if (collision.collider.CompareTag("TrafficCone"))
         {
@@ -30,7 +33,7 @@ public class Hazards : MonoBehaviour
         }
         else if (collision.collider.CompareTag("PotHole"))
         {
-            Debug.Log("POT HOLE HIT");
+            car.TrafficConeHit();
         }
         else if (collision.collider.CompareTag("OilBarrel"))
         {

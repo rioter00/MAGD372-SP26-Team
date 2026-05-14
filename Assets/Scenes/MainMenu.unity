@@ -663,7 +663,7 @@ MonoBehaviour:
   playButton: {fileID: 1121830703}
   controlsButton: {fileID: 1336760598}
   exitButton: {fileID: 741489958}
-  gameSceneName: RandomTileSpawning - MH
+  gameSceneName: Car Interior Setup - NH
   flyTime: 0.6
   flyDistance: 1000
 --- !u!4 &535121900
