@@ -1234,26 +1234,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnvironmentManager
   folderPath: EnvironmentPrefabs
   currentSpawnZ: 20
-  segmentLength: 6
-  segmentsAheadOnStart: 12
-  spawnTriggerDistance: 80
-  roadHalfWidth: 3
+  segmentLength: 12
+  segmentsAheadOnStart: 20
+  spawnTriggerDistance: 300
+  roadHalfWidth: 30
   roadsideClearDistance: 6
   nearBandMin: 1
   nearBandMax: 4
-  nearBandCount: 1
-  midBandMin: 4
-  midBandMax: 8
+  nearBandCount: 2
+  midBandMin: 1
+  midBandMax: 2
   midBandCount: 3
-  farBandMin: 8
-  farBandMax: 14
+  farBandMin: 1
+  farBandMax: 3
   farBandCount: 4
-  minScale: 4.5
-  maxScale: 5.5
+  minScale: 2
+  maxScale: 3.5
   targetMoveSpeed: 80
-  acceleration: 20
+  acceleration: 15
   cleanupReference: {fileID: 200940573}
-  despawnBehindDistance: 25
+  despawnBehindDistance: 40
   spawnY: 0
 --- !u!1 &921550829
 GameObject:
@@ -1343,6 +1343,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3060897407761821886, guid: 512ba3d180ab945cc9bd2f3526e3762e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3247362946795214408, guid: 512ba3d180ab945cc9bd2f3526e3762e, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -1395,6 +1399,50 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6977519714750959236, guid: 512ba3d180ab945cc9bd2f3526e3762e, type: 3}
+      propertyPath: trackNameText
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6977519714750959236, guid: 512ba3d180ab945cc9bd2f3526e3762e, type: 3}
+      propertyPath: honkCounterText
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6977519714750959236, guid: 512ba3d180ab945cc9bd2f3526e3762e, type: 3}
+      propertyPath: tracks.Array.size
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 6977519714750959236, guid: 512ba3d180ab945cc9bd2f3526e3762e, type: 3}
+      propertyPath: 'tracks.Array.data[1]'
+      value: 
+      objectReference: {fileID: 8300000, guid: 9f4b0a629f5642b49979224bb39b02fa, type: 3}
+    - target: {fileID: 6977519714750959236, guid: 512ba3d180ab945cc9bd2f3526e3762e, type: 3}
+      propertyPath: 'tracks.Array.data[2]'
+      value: 
+      objectReference: {fileID: 8300000, guid: aea0d970248848046aa8828a623c13dc, type: 3}
+    - target: {fileID: 6977519714750959236, guid: 512ba3d180ab945cc9bd2f3526e3762e, type: 3}
+      propertyPath: 'tracks.Array.data[3]'
+      value: 
+      objectReference: {fileID: 8300000, guid: f91dfba2eda58814d91648bc7b2c90af, type: 3}
+    - target: {fileID: 6977519714750959236, guid: 512ba3d180ab945cc9bd2f3526e3762e, type: 3}
+      propertyPath: 'tracks.Array.data[4]'
+      value: 
+      objectReference: {fileID: 8300000, guid: a466518bff596094fb14ff47f977ae81, type: 3}
+    - target: {fileID: 6977519714750959236, guid: 512ba3d180ab945cc9bd2f3526e3762e, type: 3}
+      propertyPath: 'tracks.Array.data[5]'
+      value: 
+      objectReference: {fileID: 8300000, guid: 290d18e734d803c42b7ed5664c7cf138, type: 3}
+    - target: {fileID: 6977519714750959236, guid: 512ba3d180ab945cc9bd2f3526e3762e, type: 3}
+      propertyPath: 'tracks.Array.data[6]'
+      value: 
+      objectReference: {fileID: 8300000, guid: 5a8affca54f54e94187879ea69737ca4, type: 3}
+    - target: {fileID: 6977519714750959236, guid: 512ba3d180ab945cc9bd2f3526e3762e, type: 3}
+      propertyPath: 'tracks.Array.data[7]'
+      value: 
+      objectReference: {fileID: 8300000, guid: 319fda9632e4c334b934ebfbd759d673, type: 3}
+    - target: {fileID: 6977519714750959236, guid: 512ba3d180ab945cc9bd2f3526e3762e, type: 3}
+      propertyPath: 'tracks.Array.data[8]'
+      value: 
+      objectReference: {fileID: 8300000, guid: 785174c67c21cb445b3bb96d83d0946c, type: 3}
     - target: {fileID: 7304341848267876526, guid: 512ba3d180ab945cc9bd2f3526e3762e, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -1440,7 +1488,8 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 8630869953317378900, guid: 512ba3d180ab945cc9bd2f3526e3762e, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 512ba3d180ab945cc9bd2f3526e3762e, type: 3}
@@ -1561,23 +1610,23 @@ MonoBehaviour:
   - {fileID: 1563535841}
   environmentFolderPath: EnvironmentPrefabs
   cleanupReference: {fileID: 200940573}
-  roadHalfWidth: 12
-  sideTerrainWidth: 80
+  roadHalfWidth: 50
+  sideTerrainWidth: 400
   gapFromRoad: 0
-  roadsideClearDistance: 10
+  roadsideClearDistance: 22
   tileY: 0
-  currentSpawnZ: 50
-  segmentLength: 100
-  segmentsAheadOnStart: 15
-  spawnTriggerDistance: 300
+  currentSpawnZ: 20
+  segmentLength: 50
+  segmentsAheadOnStart: 12
+  spawnTriggerDistance: 700
   targetMoveSpeed: 80
   acceleration: 20
-  minPropsPerSide: 12
+  minPropsPerSide: 10
   maxPropsPerSide: 25
-  propEdgePadding: 2
+  propEdgePadding: 0.5
   minPropScale: 4
   maxPropScale: 6
-  despawnBehindDistance: 80
+  despawnBehindDistance: 30
 --- !u!4 &1054303722 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5591267667262641272, guid: 8d7211601387e2e4f9d94e1ab8c1e420, type: 3}
