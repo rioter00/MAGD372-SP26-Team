@@ -724,7 +724,7 @@ GameObject:
   - component: {fileID: 3827418253459080885}
   m_Layer: 0
   m_Name: Pothole
-  m_TagString: Untagged
+  m_TagString: PotHole
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1263,7 +1263,7 @@ GameObject:
   - component: {fileID: 2163133498847189018}
   m_Layer: 0
   m_Name: Pothole (1)
-  m_TagString: Untagged
+  m_TagString: PotHole
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1376,7 +1376,7 @@ GameObject:
   - component: {fileID: 1605088719882307205}
   m_Layer: 0
   m_Name: pine_tree_1
-  m_TagString: Untagged
+  m_TagString: Hazard
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -236,7 +236,7 @@ GameObject:
   - component: {fileID: 9068449244611944680}
   m_Layer: 0
   m_Name: Oil Barrel (1)
-  m_TagString: Untagged
+  m_TagString: OilBarrel
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -912,7 +912,7 @@ GameObject:
   - component: {fileID: 637290295105828722}
   m_Layer: 0
   m_Name: Oil Barrel
-  m_TagString: Untagged
+  m_TagString: OilBarrel
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

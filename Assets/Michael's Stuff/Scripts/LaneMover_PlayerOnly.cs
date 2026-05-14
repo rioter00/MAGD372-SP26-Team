@@ -88,8 +88,9 @@ public class LaneMover_PlayerOnly : MonoBehaviour
         } else { 
         }
 
-            oilOnWindshield -= Time.deltaTime * 3f;
-            oil_ANIMATION_Frame = Mathf.CeilToInt(oilOnWindshield);
+            oilOnWindshield -= Time.deltaTime * 0.5f;
+            if(oilOnWindshield < 0) oilOnWindshield = 0;
+        oil_ANIMATION_Frame = Mathf.CeilToInt(oilOnWindshield);
 
         if (playerDead)
         {

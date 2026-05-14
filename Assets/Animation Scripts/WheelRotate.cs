@@ -29,6 +29,6 @@ public class WheelRotate : MonoBehaviour
         //     break;
         //     default:
         // }
-        wheelTransform.rotation = Quaternion.Euler(0,0, wheelRotation);
+        wheelTransform.rotation = Quaternion.Euler(0,0, wheelRotation*-1);
     }
 }
