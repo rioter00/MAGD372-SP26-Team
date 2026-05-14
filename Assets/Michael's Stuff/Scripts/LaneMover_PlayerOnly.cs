@@ -161,6 +161,14 @@ public class LaneMover_PlayerOnly : MonoBehaviour
 
     IEnumerator ChangeLane(int changeLane)
     {
+        if(lane > 3)
+        {
+            lane = 3;
+        }
+        if(lane < 0)
+        {
+            lane = 0;
+        }
         changing = true;
 
         Vector3 start = transform.position;

@@ -4418,6 +4418,23 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!114 &2144035758
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2144035751}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 873352e3c939a447898349eddb87f586, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InteriorRumble
+  rumbleStrengthX: 0.8
+  rumbleStrengthY: 1.5
+  turningRumbleMultiplier: 1
+  interiorTransform: {fileID: 2144035752}
+  turning: 0
 --- !u!1001 &433846149880580234
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4540,6 +4557,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 7142860417967450491, guid: b9ef324298c61468a8b08737cadc08a7, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2144035755}
+    - targetCorrespondingSourceObject: {fileID: 7142860417967450491, guid: b9ef324298c61468a8b08737cadc08a7, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2144035758}
     - targetCorrespondingSourceObject: {fileID: 3242182973212143878, guid: b9ef324298c61468a8b08737cadc08a7, type: 3}
       insertIndex: -1
       addedObject: {fileID: 979285502}
